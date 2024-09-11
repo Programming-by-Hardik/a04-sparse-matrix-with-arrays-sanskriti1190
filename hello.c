@@ -1,6 +1,5 @@
 // sparse_matrix_assignment.c
 // This program represents a sparse matrix using a 2D array in C and includes test cases.
-
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -38,22 +37,25 @@ void createSparseMatrix(int sparseMatrix[][3], int originalMatrix[][N], int rows
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             if (originalMatrix[i][j] != 0) {
-                sparseMatrix[k][0] = i;       // Row index
-                sparseMatrix[k][1] = j;       // Column index
-                sparseMatrix[k][2] = originalMatrix[i][j]; // Value
+                if (k >= MAX) {
+                    printf("Error: Too many non-zero elements\n");
+                    return;
+                }
+                sparseMatrix[k + 1][0] = i;       // Row index
+                sparseMatrix[k + 1][1] = j;       // Column index
+                sparseMatrix[k + 1][2] = originalMatrix[i][j]; // Value
                 k++;
             }
         }
     }
-    // Store the number of non-zero elements in the first element of sparseMatrix
-    sparseMatrix[0][2] = k; 
-    sparseMatrix[0][0] = rows; // Store number of rows
-    sparseMatrix[0][1] = cols; // Store number of columns
+    // Store the number of non-zero elements and matrix dimensions
+    sparseMatrix[0][0] = rows; // Number of rows
+    sparseMatrix[0][1] = cols; // Number of columns
+    sparseMatrix[0][2] = k;    // Number of non-zero elements
 }
 
 // Function to print sparse matrix representation
 void printSparseMatrix(int sparseMatrix[][3], int nonZeroCount) {
-    // The first two elements of sparseMatrix are the dimensions of the matrix
     int rows = sparseMatrix[0][0];
     int cols = sparseMatrix[0][1];
 
@@ -82,7 +84,7 @@ bool testCreateSparseMatrix() {
         {3, 3, 6}    // Original matrix[3][3] = 6
     };
 
-    int sparseMatrix[MAX][3];
+    int sparseMatrix[MAX][3] = {0}; // Initialize with zeros
     createSparseMatrix(sparseMatrix, originalMatrix, 4, N);
 
     // Compare the sparseMatrix with the expectedSparseMatrix
@@ -117,6 +119,14 @@ bool testPrintSparseMatrix() {
     return true;
 }
 
+
+   
+    
+
+ 
+
+
+   
     
   
    
