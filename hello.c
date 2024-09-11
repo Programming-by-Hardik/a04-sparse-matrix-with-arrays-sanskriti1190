@@ -47,17 +47,15 @@ void createSparseMatrix(int sparseMatrix[][3], int originalMatrix[][N], int rows
     }
     sparseMatrix[0][2] = k; 
 
-
 }
 
 // Function to print sparse matrix representation
 void printSparseMatrix(int sparseMatrix[][3], int nonZeroCount) {
     //WRITE THE FUNCTION DESCRIPTION HERE
    printf("Sparse Matrix (%dx%d) with %d non-zero elements:\n", sparseMatrix[0][0] + 1, sparseMatrix[0][1] + 1, nonZeroCount);
-    for (int i = 1; i <= nonZeroCount; i++) {
-        printf("Row: %d, Column: %d, Value: %d\n", sparseMatrix[i][0], sparseMatrix[i][1], sparseMatrix[i][2]);
+     for (int i = 1; i <= nonZeroCount; i++) {
+       printf("Row: %d, Column: %d, Value: %d\n", sparseMatrix[i][0], sparseMatrix[i][1], sparseMatrix[i][2]);
     }    
-
 }
 
 //--------------------------------------------------------
