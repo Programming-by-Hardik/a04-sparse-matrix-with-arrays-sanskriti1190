@@ -58,7 +58,6 @@ void printSparseMatrix(int sparseMatrix[][3], int nonZeroCount) {
         printf("Row: %d, Column: %d, Value: %d\n", sparseMatrix[i][0], sparseMatrix[i][1], sparseMatrix[i][2]);
     }    
 
-
 }
 
 //--------------------------------------------------------
